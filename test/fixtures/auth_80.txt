@@ -1,0 +1,14 @@
+POST /zimbra/ HTTP/1.0
+X-Forwarded-For: 186.67.32.114
+Host: 200.91.20.185
+Connection: close
+Content-Type: application/x-www-form-urlencoded
+Origin: http://190.196.208.85
+Cookie: ZM_TEST=true; ZM_TEST=true
+Content-Length: 66
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.5.17 (KHTML, like Gecko) Version/8.0.5 Safari/600.5.17
+Accept-Language: es-es
+Accept-Encoding: gzip, deflate
+
+loginOp=login&username=pbruna&password=5693537374&client=preferred

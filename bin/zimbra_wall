@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'zimbra_wall'
+require 'optparse'
+
+# host, port
+ARGV << '-h' if ARGV.empty?
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+
+  opts.banner = "Usage: zimbra_wall [options]"
+
+  opts.on("-dDOMAIN", "--domain=DOMAIN", "Email domain of the mailboxes") do |o|
+    options[:domain] = o
+  end
+
+  opts.on("-fFILE", "--usersfile=FILE", "YAML file with the list of blocked users") do |o|
+    options[:blocked_users_file] = o
+  end
+
+  opts.on("-mSERVER", "--mailbox=SERVER", "Hostname or IP of the mailbox to where we are migrating") do |o|
+    options[:backend] = o
+  end
+
+  opts.on("-zSERVERPORT", "--mailbox-port=SERVERPORT", "Hostname or IP of the mailbox to where we are migrating") do |o|
+    options[:backend_port] = o
+  end
+
+  opts.on("-aADDRESS", "--bindaddress=ADDRESS", "The IP Address to bind to. Default 0.0.0.0") do |o|
+    options[:bind_address] = o
+  end
+
+  opts.on("-pPORT", "--bindport=PORT", "The Port to bind to. Default 0.0.0.0") do |o|
+    options[:bind_port] = o
+  end
+
+  opts.on("-v", "--verbose", "Save logs information to /var/log/zimbra_wall.log") do |o|
+    options[:debug] = true
+  end
+
+  opts.on("-h", "--help", "Prints this help") do
+   puts opts
+   exit
+  end
+
+end
+
+optparse.parse!
+ZimbraWall.start options

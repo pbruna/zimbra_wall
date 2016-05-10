@@ -1,0 +1,5 @@
+check process zimbra_wall with pidfile /var/run/zimbra_wall.pid
+   start program = "/etc/init.d/zimbra_wall start"
+   stop program = "/etc/init.d/zimbra_wall stop"
+   if failed host 127.0.0.1 port 9292 then restart
+   alert email@example.com
